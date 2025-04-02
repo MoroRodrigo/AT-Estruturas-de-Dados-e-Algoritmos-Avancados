@@ -21,7 +21,7 @@ def resolver_tour_heuristica(x, y, move, tabuleiro, n):
     if move == n * n:
         return True
 
-    # Ordena os movimentos pela quantidade de opções futuras (menor grau primeiro)
+    # Ordena os movimentos pela quantidade de opções futuras
     movimentos_ordenados = sorted(MOVIMENTOS, key=lambda m: contar_movimentos_validos(x + m[0], y + m[1], tabuleiro, n))
 
     for dx, dy in movimentos_ordenados:
@@ -30,7 +30,7 @@ def resolver_tour_heuristica(x, y, move, tabuleiro, n):
             tabuleiro[novo_x][novo_y] = move
             if resolver_tour_heuristica(novo_x, novo_y, move + 1, tabuleiro, n):
                 return True
-            tabuleiro[novo_x][novo_y] = -1  # Backtracking
+            tabuleiro[novo_x][novo_y] = -1 
 
     return False
 
